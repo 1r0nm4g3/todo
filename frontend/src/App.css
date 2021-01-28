@@ -1,38 +1,118 @@
-.App {
-  text-align: center;
+header{
+    width: 100%;
+    background-color: rgba(252,231,243,0.38);
+    height: 70px;
+    margin: auto;
+    backdrop-filter: blur(6px) brightness(1.42);
+    box-shadow: 0px 13px 25px rgba(0,0,0,.16);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App{
+    background-image: url('http://localhost:3000/img/background.jpg');
+    background-size: cover;
+    background-position: bottom;
+    min-height: 100vh;
+    font-family: "Nunito";
+    background-attachment: fixed;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.navbar{
+    max-width: 1088px;
+    display: flex;
+    color: #831843;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.navbar--title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.App-link {
-  color: #61dafb;
+.navbar--logo{
+    padding: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navbar--title h3 {
+    color: #831843;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.navbar--links a{
+    font-weight: normal;
+    font-size: 20px;
+}
+
+.navbar--links{
+    display: flex;
+    list-style-type: none;
+}
+
+.navbar--links li:not(:first-child){
+    padding-left: 50px;
+}
+
+a {
+    color: #831843;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+main {
+    max-width: 1088px;
+    height: 600px;
+    margin: 70px auto 50px;
+    backdrop-filter: blur(6px) brightness(1.42);
+    box-shadow: 0px 13px 25px rgba(0,0,0,.16);
+    background-color: rgba(252,231,243,0.38);
+    border-radius: 10px;
+    padding: 5px 50px;
+    position: relative;
+}
+
+footer{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    max-width: 1088px;
+    margin: auto;
+    color: rgb(252,231,243);
+    padding: 20px 0 40px;
+}
+
+.footer--copyright{
+    font-size: 18px;
+}
+
+.footer--links{
+    margin-top: 10px;
+}
+
+.footer--links a{
+    color: rgb(252,231,243);
+    font-weight: normal;
+    font-size: 12px;
+}
+
+.list-details{
+    text-align: right;
+    color: #83626F;
+    font-size: 10px;
+}
+
+.list-header{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.list-header h1{
+    color: #831843;
+    font-size: 48px;
+    font-weight: bold;
+    margin: 0px;
 }
