@@ -1,3 +1,12 @@
+
+html{
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 header{
     width: 100%;
     background-color: rgba(252,231,243,0.38);
@@ -5,10 +14,13 @@ header{
     margin: auto;
     backdrop-filter: blur(6px) brightness(1.42);
     box-shadow: 0px 13px 25px rgba(0,0,0,.16);
+    position: fixed;
+    top: 0px;
+    z-index: 2;
 }
 
-.App{
-    background-image: url('http://localhost:3000/img/background.jpg');
+body{
+    background-image: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.5)), url('http://localhost:3000/img/background.jpg');
     background-size: cover;
     background-position: bottom;
     min-height: 100vh;
@@ -23,6 +35,7 @@ header{
     align-items: center;
     justify-content: space-between;
     margin: auto;
+    padding: 0px 40px;
 }
 
 .navbar--title{
@@ -32,13 +45,14 @@ header{
 }
 
 .navbar--logo{
-    padding: 10px;
+    
 }
 
 .navbar--title h3 {
     color: #831843;
     font-size: 20px;
     font-weight: bold;
+    margin-left: 10px;
 }
 
 .navbar--links a{
@@ -63,13 +77,13 @@ a {
 
 main {
     max-width: 1088px;
-    height: 600px;
-    margin: 70px auto 50px;
-    backdrop-filter: blur(6px) brightness(1.42);
+    min-height: 600px;
+    margin: 120px auto 50px;
+    backdrop-filter: blur(6px) brightness(1.8);
     box-shadow: 0px 13px 25px rgba(0,0,0,.16);
-    background-color: rgba(252,231,243,0.38);
+    background-color: rgba(252,231,243,0.68);
     border-radius: 10px;
-    padding: 5px 50px;
+    padding: 5px 50px 100px;
     position: relative;
 }
 
@@ -94,13 +108,17 @@ footer{
 .footer--links a{
     color: rgb(252,231,243);
     font-weight: normal;
-    font-size: 12px;
+    font-size: 13px;
+}
+
+.listItems{
+    margin-top: 40px;
 }
 
 .list-details{
     text-align: right;
-    color: #83626F;
-    font-size: 10px;
+    color: #47363D;
+    font-size: 13px;
 }
 
 .list-header{
@@ -115,4 +133,185 @@ footer{
     font-size: 48px;
     font-weight: bold;
     margin: 0px;
+}
+
+.list-options{
+    font-size: 13px;
+    color: #47363D;
+}
+
+.list-options a{
+    color: #47363D;
+    font-weight: normal;
+    margin: 0 10px;
+}
+.list-options a:first-child{
+    margin-left: 0px;
+}
+
+.listItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: 70px;
+}
+
+.listItem--title{
+    color: #831843;
+    font-size: 20px;
+    margin: 0;
+}
+
+.listItem input[type="checkbox"]:checked ~ .listItem--content .listItem--title {
+    color: #B18295;
+    text-decoration: line-through; 
+}
+
+
+.listItem input[type="checkbox"]:checked ~ .listItem--content .listItem--description{
+    text-decoration: line-through;
+}
+
+
+.listItem--description{
+    color: #83626F;
+    font-size: 13px;
+    margin: 0;
+    margin-top: 20px;
+}
+
+.listItem--details{
+    color: #83626F;
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 10.5px;
+}
+
+.listItem--content{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.listItem--content__left{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 20px;
+}
+
+.listItem--content__right{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex: 1;
+}
+
+.listItem--categories{
+    text-align: right;
+}
+
+.listItem--edit{
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.listItem input[type="checkbox"]{
+    display: none
+}
+
+.listItem--content::before{
+    content: "";
+    background-image: url("http://localhost:3000/img/checkbox.svg");
+    height: 60px;
+    width: 40px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.listItem input[type="checkbox"]:checked ~ .listItem--content::before{
+    background-image: url("http://localhost:3000/img/checkbox-checked.svg");
+    margin: 2px -2px 0 2px;
+}
+
+.listItem input[type="checkbox"]::after{
+
+}
+
+.listItem input[type="checkbox"]:checked{
+    
+}
+
+.pill{
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 500px;
+    padding: 5px 18px;
+    flex-grow: 0;
+    display: inline-block;
+    margin: 10px 0 0 14px;
+    transition: 0.2s filter ease-in-out;
+    cursor: pointer;
+}
+
+.recurring{
+    background-image: url('http://localhost:3000/img/clock.svg');
+    background-repeat: no-repeat;
+    padding: 0;
+    border-radius: 0;
+    height: 25px;
+    width: 25px;
+    display: inline-block;
+    margin: 10px 0 -11px 14px;
+}
+
+.pill:hover{
+    filter: brightness(0.8);
+}
+
+.pill:first-child{
+    margin-left: 0;
+}
+
+.pill__peach{
+    color: #83626F;
+    background-color: #FCE7F3;
+}
+
+.pill__green{
+    color: #065F46;
+    background-color: #A7F3D0; 
+}
+
+.pill__purple{
+    color: #5B21B6;
+    background-color: #DDD6FE;
+}
+
+.pill__yellow{
+    color: #92400E;
+    background-color: #FDE68A;
+}
+
+.pill__blue{
+    color: #1E40AF;
+    background-color: #BFDBFE;
+}
+
+.pill__red{
+    color: #991B1B;
+    background-color: #FECACA;
+}
+
+.pill__darkpink{
+    color: #FCE7F3;
+    background-color: #831843;
 }
