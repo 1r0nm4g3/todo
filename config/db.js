@@ -1,6 +1,14 @@
 const mongoose = require('mongoose');
 const config = require('config');
-const db = config.get('mongoURI')
+const e = require('express');
+// let db = config.get('mongoURI');
+
+if(process.env.NODE_ENV === 'production'){
+    const db = process.env.MONGO_URI
+}else{
+    const db = config.get('mongoURI')
+}
+
 
 const connectDB = async () => {
     try{
