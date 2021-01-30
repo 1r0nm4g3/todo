@@ -1,6 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-const ListTitle = () => {
+const ListTitle = ({list}) => {
     return (
         <div className="list-title">
             <h1>My List</h1>
@@ -13,6 +14,10 @@ const ListTitle = () => {
             </div>
         </div>
     )
+}
+
+ListTitle.propTypes = {
+    list: PropTypes.object.isRequired
 }
 
 export default ListTitle

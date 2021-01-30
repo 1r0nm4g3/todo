@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import PropTypes from 'prop-types'
 
-const ListItem = ({task}) => {
-    const [check, setCheck] = useState(task.checked)
+const ListItem = ({item}) => {
+    const [check, setCheck] = useState(item.checked)
 
     useEffect(() => {
-        setCheck(task.checked)
-    }, [])
+        setCheck(item.checked)
+    }, [item.checked])
 
     const catColor = (category) => {
         switch (category) {
@@ -31,24 +31,24 @@ const ListItem = ({task}) => {
 
     return (
         <div className="listItem">
-            <input type="checkbox" name={task.id} id={task.id} checked={check}/>
-            <label className="listItem--content" htmlFor={task.id} checked={task.checked} onClick={() => setCheck(!check)}>
+            <input type="checkbox" name={item.id} id={item.id} checked={check} onChange={() => setCheck(check)}/>
+            <label className="listItem--content" htmlFor={item.id} onClick={() => setCheck(!check)}>
                 <div className="listItem--content__left">
-                    <h4 className="listItem--title">{task.title}</h4>
-                    {task.desc && <p className="listItem--description">{task.desc}</p>}
+                    <h4 className="listItem--title">{item.title}</h4>
+                    {item.desc && <p className="listItem--description">{item.desc}</p>}
                 </div>
                 <div className="listItem--content__right">
                     <div className="listItem--details">
-                        <span className="listItem--detail">Created on {task.created}</span>
-                        <span className="listItem--detail">Due {task.due}</span>
+                        <span className="listItem--detail">Created on {item.created}</span>
+                        <span className="listItem--detail">Due {item.due}</span>
                     </div>
                     <div className="listItem--categories">
-                        {task.categories.map((category, key) => {
+                        {item.categories.map((category, key) => {
                             return (
                                 <div className={"pill " + catColor(category)} key={key}>{category}</div>
                             )
                         })}
-                        {task.recurring && <div className="recurring"></div>}
+                        {item.recurring && <div className="recurring"></div>}
                     </div>
                 </div>
             </label>
@@ -62,7 +62,7 @@ const ListItem = ({task}) => {
 }
 
 ListItem.propTypes = {
-    task: PropTypes.object.isRequired
+    item: PropTypes.object.isRequired
 }
 
 
