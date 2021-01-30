@@ -2,7 +2,7 @@
   "name": "listit",
   "version": "0.0.1",
   "engines": {
-    "node": "12.",
+    "node": "12.x",
     "npm": "6.x"
   },
   "description": "Listit App - Collaborate on lists!",
@@ -13,7 +13,8 @@
     "server": "nodemon server.js",
     "client": "npm start --prefix frontend",
     "clientinstall": "npm install --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false && cd frontend/ && npm install --only=dev && NODE_ENV=development npm run install --no-shrinkwrap && npm run build"
   },
   "repository": {
     "type": "git",
