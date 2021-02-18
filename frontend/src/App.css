@@ -13,6 +13,19 @@ html{
     color: #FBCFE8;
 }
 
+#root{
+    height: 100vh;
+}
+
+.App{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 120px
+}
+
 header{
     width: 100%;
     background-color: rgba(252,231,243,0.38);
@@ -86,9 +99,9 @@ a {
 }
 
 main {
-    max-width: 1088px;
+    width: 1088px;
+    max-width: 95%;
     min-height: 600px;
-    margin: 120px auto 50px;
     backdrop-filter: blur(6px) brightness(1.8);
     box-shadow: 0px 13px 25px rgba(0,0,0,.16);
     background-color: rgba(252,231,243,0.68);
@@ -97,14 +110,122 @@ main {
     position: relative;
 }
 
+.main-small {
+    width: 620px;
+    padding: 30px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+}
+
+.main-small h1{
+    text-align: center;
+    margin: 10px 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-small form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    width: 75%;
+}
+
+.main-small form .form-group{
+    width: 100%;
+    color: #831843;
+    font-size: 18px;
+    margin-top: 34px;
+}
+
+.main-small form .form-group input{
+    width: 100%;
+    border: none;
+    background-color: #FCE7F3;
+    height: 60px;
+    border-radius: 4px;
+    font-size: 18px;
+    padding: 0 25px;
+    transition: all .3s ease-in-out;
+    border: 1px solid transparent;
+    color: #831843;
+}
+
+.main-small form .form-group input:focus{
+    background-color: #FDF2F8;
+    outline: none;
+    border: 1px solid #831843;
+}
+
+.main-small form .form-group input:hover{
+    outline: none;
+    border: 1px solid #831843;
+}
+
+.main-small form .form-split{
+    width: 100%;
+    color: #831843;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 34px;
+}
+
+.main-small form input[type="checkbox"]{
+    display: none;
+}
+
+.check-group label{
+    padding-left: 30px;
+    position: relative;
+}
+
+.check-group label::before{
+    content: "";
+    position: absolute;
+    margin: 0 -30px;
+    display: inline-block;
+    background-image: url("assets/img/form-checkbox.svg");
+    height: 20px;
+    width: 20px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.check-group input[type="checkbox"]:checked ~ label::before{
+    background-image: url("assets/img/form-checkbox-checked.svg");
+}
+
+.main-small form button{
+    width: 100%;
+    height: 60px;
+    border: none;
+    background-image: linear-gradient(90deg, rgba(190,24,93,1), rgba(131,24,67,1));
+    color: white;
+    font-family: "Nunito";
+    font-size: 20px;
+    border-radius: 4px;
+    margin-top: 50px;
+}
+
+.main-small form p{
+    margin: 50px 0 25px;
+}
+
 footer{
     display: flex;
     align-items: center;
     flex-direction: column;
     max-width: 1088px;
-    margin: auto;
+    margin: 30px 0 30px;
     color: rgb(252,231,243);
     padding: 20px 0 40px;
+    text-align: center;
 }
 
 .footer--copyright{
@@ -250,7 +371,7 @@ footer{
 
 .listItem input[type="checkbox"]:checked ~ .listItem--content::before{
     background-image: url("assets/img/checkbox-checked.svg");
-    margin: 2px -2px 0 2px;
+    margin: 1px -2px 0 2px;
 }
 
 .listItem input[type="checkbox"]::after{

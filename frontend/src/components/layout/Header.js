@@ -13,9 +13,9 @@ const Header = () => {
                 </div>
                 <nav>
                     <ul className="navbar--links">
-                        <li className="navbar--link"><a href="/#">My Lists</a></li>
+                        <li className="navbar--link"><Link to="/">My Lists</Link></li>
                         <li className="navbar--link"><Link to="/about">About</Link></li>
-                        <li className="navbar--link"><a href="/#">Login</a></li>
+                        <li className="navbar--link"><Link to="/login">Login</Link></li>
                         <li className="meatballMenu"><a href="/#"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="14" viewBox="0 0 18 14">
     <path id="Path_2" data-name="Path 2" d="M4,6H20M4,12H20M4,18H20" transform="translate(-3 -5)" fill="none" stroke="#831843" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"/>
     </svg></a></li>
