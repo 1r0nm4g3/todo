@@ -7,6 +7,7 @@ import About from './pages/About'
 import Terms from './pages/Terms'
 import Privacy from './pages/Privacy'
 import Login from './pages/Login'
+import Register from './pages/Register';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route exact path='/terms' component={Terms} /> 
         <Route exact path='/privacy' component={Privacy} /> 
         <Route exact path='/login' component={Login} />
+        <Route exact path="/register" component={Register} />
       </Switch>
       <Footer />
     </div>

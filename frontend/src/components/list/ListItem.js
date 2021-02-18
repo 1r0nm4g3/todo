@@ -32,8 +32,8 @@ const ListItem = ({item}) => {
     return (
         <div className="listItem">
             <input type="checkbox" name={item.id} id={item.id} checked={check} onChange={() => setCheck(check)}/>
-            <label className="listItem--content" htmlFor={item.id} onClick={() => setCheck(!check)}>
-                <div className="listItem--content__left">
+            <label className="listItem--content" htmlFor={item.id} onClick={(e) => {if (e.target.classList.contains("listItem--content")) setCheck(!check) }}>
+                <div className="listItem--content__left" onClick={() => setCheck(!check)}>
                     <h4 className="listItem--title">{item.title}</h4>
                     {item.desc && <p className="listItem--description">{item.desc}</p>}
                 </div>

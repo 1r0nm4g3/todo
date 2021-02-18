@@ -146,11 +146,25 @@ main {
 .main-small form .form-group input{
     width: 100%;
     border: none;
-    background-color: #FDF2F8;
+    background-color: #FCE7F3;
     height: 60px;
     border-radius: 4px;
     font-size: 18px;
     padding: 0 25px;
+    transition: all .3s ease-in-out;
+    border: 1px solid transparent;
+    color: #831843;
+}
+
+.main-small form .form-group input:focus{
+    background-color: #FDF2F8;
+    outline: none;
+    border: 1px solid #831843;
+}
+
+.main-small form .form-group input:hover{
+    outline: none;
+    border: 1px solid #831843;
 }
 
 .main-small form .form-split{
@@ -357,7 +371,7 @@ footer{
 
 .listItem input[type="checkbox"]:checked ~ .listItem--content::before{
     background-image: url("assets/img/checkbox-checked.svg");
-    margin: 2px -2px 0 2px;
+    margin: 1px -2px 0 2px;
 }
 
 .listItem input[type="checkbox"]::after{

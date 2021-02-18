@@ -13,7 +13,7 @@ const Header = () => {
                 </div>
                 <nav>
                     <ul className="navbar--links">
-                        <li className="navbar--link"><a href="/#">My Lists</a></li>
+                        <li className="navbar--link"><Link to="/">My Lists</Link></li>
                         <li className="navbar--link"><Link to="/about">About</Link></li>
                         <li className="navbar--link"><Link to="/login">Login</Link></li>
                         <li className="meatballMenu"><a href="/#"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="14" viewBox="0 0 18 14">
