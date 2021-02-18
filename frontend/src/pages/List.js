@@ -41,10 +41,10 @@ const List = () => {
       }
     
     return (
-        <>
+        <main>
             <ListHeader list={list} />
             <ListItems items={list.items}/>
-        </>
+        </main>
     )
 }
 
