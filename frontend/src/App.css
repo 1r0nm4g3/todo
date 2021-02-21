@@ -101,7 +101,6 @@ a {
 main {
     width: 1088px;
     max-width: 95%;
-    min-height: 600px;
     backdrop-filter: blur(6px) brightness(1.8);
     box-shadow: 0px 13px 25px rgba(0,0,0,.16);
     background-color: rgba(252,231,243,0.68);
@@ -116,7 +115,6 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 0;
 }
 
 .main-small h1{
@@ -176,12 +174,26 @@ main {
 }
 
 .main-small form input[type="checkbox"]{
-    display: none;
+    position: absolute;
+    height: 1px;
+    width: 1px;
+}
+
+.main-small form input[type="checkbox"]:focus{
+    outline: none;
 }
 
 .check-group label{
     padding-left: 30px;
     position: relative;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    top: 5px;
+    left: 5px;
+}
+
+.check-group input[type="checkbox"]:focus ~ label{
+    font-weight: bold;
 }
 
 .check-group label::before{
@@ -211,6 +223,7 @@ main {
     font-size: 20px;
     border-radius: 4px;
     margin-top: 50px;
+    cursor: pointer;
 }
 
 .main-small form p{
@@ -371,7 +384,7 @@ footer{
 
 .listItem input[type="checkbox"]:checked ~ .listItem--content::before{
     background-image: url("assets/img/checkbox-checked.svg");
-    margin: 1px -2px 0 2px;
+    margin: 1px -1px 0 1px;
 }
 
 .listItem input[type="checkbox"]::after{
