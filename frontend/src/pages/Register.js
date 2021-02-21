@@ -1,8 +1,12 @@
-import React, {useState } from 'react'
+import React, {useState, useContext } from 'react'
 import {Link, useHistory} from 'react-router-dom'
+import UserContext from '../contexts/user/userContext'
 
 const Register = () => {
-    const [user, setUser] = useState({
+    const userContext = useContext(UserContext)
+    const {registerUser} = userContext
+
+    const [newUserData, setUserData] = useState({
         name: '',
         email: '',
         password: '',
@@ -10,36 +14,19 @@ const Register = () => {
         terms: false
     }, [])
     
-    const onChange = e => setUser({...user, [e.target.name]: e.target.value})
+    const onChange = e => setUserData({...newUserData, [e.target.name]: e.target.value})
 
     let history = useHistory()
 
-    const registerUser = async (newUser) => {
-        try {
-            const res = await fetch(`/api/users/register`, {
-                method: 'POST',
-                body: JSON.stringify(newUser),
-                    headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            if(res.ok){
-                console.log("Registration Successful")
-                history.push('/login')
-            }else{
-                const data = await res.json()
-                console.log(data.msg)
-            }
-        } catch (error) {
-            return error
+    const onSubmit = async e => {
+        e.preventDefault()
+        let errors = await registerUser(newUserData)
+        if(errors === null){
+            history.push("/")
+        }else{
+            console.log(errors)
         }
     }
-
-    const onSubmit = e => {
-        e.preventDefault()
-        registerUser(user)
-    }
-
 
     return (
         <main className="main-small">
@@ -63,7 +50,7 @@ const Register = () => {
                 </div>
                 <div className="form-split">
                     <div className="check-group">
-                    <input type="checkbox" name="terms" id="terms" checked={user.terms} onChange={onChange}/>
+                    <input type="checkbox" name="terms" id="terms" checked={newUserData.terms} onChange={onChange}/>
                     <label htmlFor="terms">I agree to the terms of service and privacy policy</label>
                     </div>
                 </div>

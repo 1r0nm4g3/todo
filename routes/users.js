@@ -54,6 +54,20 @@ router.post('/register',
 
 });
 
-router.post('/login', passport.authenticate('local'), (req, res) => {res.send(`${req.body}`)})
+router.post('/login', (req, res, next) => { 
+    passport.authenticate('local', (err, user, done) => {
+        if (err) {return next(err)}
+        if (!user) {return res.json({success: false})}
+        req.logIn(user, (err) => {
+            if (err) { return next(err)}
+            return res.json({success: true, user})
+        })
+    })(req, res, next)
+})
+
+router.get('/logout', (req, res) => {
+    req.logout()
+})
+
 
 module.exports = router;

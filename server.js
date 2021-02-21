@@ -5,7 +5,6 @@ const passport = require('passport')
 const cookieSession = require('cookie-session')
 
 const initializePassport = require('./config/passport');
-const { allowedNodeEnvironmentFlags } = require('process');
 initializePassport(passport)
 
 const app = express()
