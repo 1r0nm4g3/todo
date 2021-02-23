@@ -280,17 +280,42 @@ footer{
 }
 
 .list-options{
-    font-size: 13px;
-    color: #47363D;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.list-options a{
-    color: #47363D;
-    font-weight: normal;
-    margin: 0 10px;
+.link--button{
+    padding: 5px 10px;
+    margin: 3px 10px 0px 0px;
+    border: 2px solid #831843;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: .15s all ease-in-out;
 }
-.list-options a:first-child{
-    margin-left: 0px;
+
+.link--button svg {
+    margin-right: 10px;
+}
+
+.link--button:hover{
+    background-color:#831843;
+    color: #FCE7F3;
+}
+
+.link--button:nth-last-of-type(1){
+    margin-right: 0px;
+}
+
+.link--button__primary {
+    background-color: #831843;
+    color: #FCE7F3;
+}
+
+.link--button__primary:hover {
+    background-color: transparent;
+    color: #831843;
 }
 
 .listItem {

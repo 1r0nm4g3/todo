@@ -20,8 +20,12 @@ const ListItemSchema = mongoose.Schema({
         type: Date
     },
     recurring: {
-        type: Number,
-        default: 0
+        type: String,
+        default: "0"
+    },
+    catagories: {
+        type: Array,
+        default: []
     },
     checked: {
         type: Boolean,
@@ -36,4 +40,4 @@ const ListItemSchema = mongoose.Schema({
 
 })
 
-module.exports = mongoose.model('listItem', ListItemSchema)
+module.exports = mongoose.model('listItem', ListItemSchema, 'listItems')

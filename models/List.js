@@ -14,10 +14,12 @@ const ListSchema = mongoose.Schema({
         required: true
     },
     authors:{
-        type: Array
+        type: Array,
+        default: []
     },
     viewers: {
-        type: Array
+        type: Array,
+        default: []
     },
     description: {
         type: String
@@ -37,6 +39,10 @@ const ListSchema = mongoose.Schema({
     lastVisited: {
         type: Date,
         default: Date.now
+    },
+    share: {
+        type: Number,
+        default: 0
     }
 
 })

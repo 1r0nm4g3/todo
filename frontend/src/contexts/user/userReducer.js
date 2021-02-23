@@ -12,8 +12,14 @@ export default (state, action) => {
             }
         case 'LOGOUT':
             return {
+                user: null,
+                loading: true,
+                error: null
+            }
+        case 'CHECK_AUTH':
+            return {
                 ...state,
-                user: null
+                user: action.payload
             }
         default:
             return state

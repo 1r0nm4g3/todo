@@ -66,7 +66,15 @@ router.post('/login', (req, res, next) => {
 })
 
 router.get('/logout', (req, res) => {
+    req.session.destroy( (err) => {
+
+    })
     req.logout()
+})
+
+router.get('/check', (req, res) => {
+    if(req.user === null || req.user === undefined) {return false}
+    return res.json(req.user)
 })
 
 
