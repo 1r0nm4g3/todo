@@ -10,7 +10,7 @@ const ListSchema = mongoose.Schema({
         default: "Detailed"
     },
     owner: {
-        type: String,
+        type: Object,
         required: true
     },
     authors:{

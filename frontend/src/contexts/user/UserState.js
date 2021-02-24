@@ -84,6 +84,13 @@ const UserState = props => {
         return data
     }
 
+    const getUsernameByID = async (userID) => {
+        const res = await fetch(`api/users/username/${userID}`, {method: 'GET'})
+        const data = await res.json()
+        return data
+
+    }
+
     return (
         <UserContext.Provider value={{
             user: state.user,
@@ -92,7 +99,8 @@ const UserState = props => {
             login,
             logout,
             registerUser,
-            checkAuth
+            checkAuth,
+            getUsernameByID
         }}>
             {props.children}
         </UserContext.Provider>

@@ -77,5 +77,9 @@ router.get('/check', (req, res) => {
     return res.json(req.user)
 })
 
+router.get('/username/:id', async (req, res) => {
+    const user = await User.findById(req.params.id)
+    return res.json(user.name)
+})
 
 module.exports = router;

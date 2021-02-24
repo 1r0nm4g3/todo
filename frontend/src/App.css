@@ -420,6 +420,71 @@ footer{
     
 }
 
+.listRow{
+    display: flex;
+    font-size: 13px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.listInfo{
+    flex-basis: 40%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.list h3 {
+    font-size: 28px;
+    margin: 15px 0;
+    line-height: normal;
+}
+
+.listInfo p {
+    color: #4D363F;
+    font-size: 16px;
+}
+
+.listRow span{
+    color: #831843;
+}
+
+.listSharing{
+    flex-basis: 25%;
+}
+
+.listDetails{
+    text-align: right;
+}
+
+.lists{
+    margin-top: 60px;
+}
+
+.listButton{
+    font-size: 13px;
+    font-weight: bold;
+    color: #831843;
+    display: inline-flex;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 15px;
+    margin: 10px 18px 0 0;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+}
+
+.listButton svg{
+    margin-right: 8px;
+}
+
+.listButton:hover{
+    border: 1px solid #831843;
+}
+
 .pill{
     font-size: 14px;
     font-weight: bold;

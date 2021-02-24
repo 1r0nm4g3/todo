@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
     if (req.user === null || req.user === undefined) {
         return res.json({msg: "Please log in"})
     }
-    const lists = await List.find({viewers: req.user._id.toString()})
+    const lists = await List.find({'viewers.id': req.user._id.toString()})
     
     if(lists === null) {
         return res.json({msg: "No Lists"})

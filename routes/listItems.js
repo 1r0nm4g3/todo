@@ -15,7 +15,7 @@ router.get('/:listID', async (req, res) => {
         return res.json({msg: "Invalid list"})
     }
 
-    const list = await List.findOne({_id: ObjectId(req.params.listID), viewers: req.user._id.toString()})
+    const list = await List.findOne({_id: ObjectId(req.params.listID), 'viewers.id': req.user._id.toString()})
     
     if(list === null) {
         return res.json({msg: "User does not have viewing authority."})
