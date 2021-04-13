@@ -8,26 +8,32 @@ import Terms from './pages/Terms'
 import Privacy from './pages/Privacy'
 import Login from './pages/Login'
 import Register from './pages/Register';
+import Lists from './pages/Lists'
 import UserState from './contexts/user/UserState'
+import ListState from './contexts/list/ListState'
 
 function App() {
   return (
     <UserState>
-      <Router>
-      <div className="App">
-        <div></div>
-        <Header />
-        <Switch>
-          <Route exact path='/' component={List} />
-          <Route exact path='/about' component={About} />
-          <Route exact path='/terms' component={Terms} /> 
-          <Route exact path='/privacy' component={Privacy} /> 
-          <Route exact path='/login' component={Login} />
-          <Route exact path="/register" component={Register} />
-        </Switch>
-        <Footer />
-      </div>
-      </Router>
+      <ListState>
+        <Router>
+        <div className="App">
+          <div></div>
+          <Header />
+          <Switch>
+            <Route exact path='/' component={Login} />
+            <Route path='/list/:list' component={List} />
+            <Route path='/lists' component={Lists} />
+            <Route exact path='/about' component={About} />
+            <Route exact path='/terms' component={Terms} /> 
+            <Route exact path='/privacy' component={Privacy} /> 
+            <Route exact path='/login' component={Login} />
+            <Route exact path="/register" component={Register} />
+          </Switch>
+          <Footer />
+        </div>
+        </Router>
+      </ListState>
     </UserState>
   );
 }

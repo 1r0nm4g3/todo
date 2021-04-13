@@ -29,11 +29,11 @@ function initialize(passport){
     }, authenticateUser))
 
     passport.serializeUser((user, done) => {
-        done(null, user.id)
+        done(null, user._id)
     })
 
-    passport.deserializeUser(async (id, done) => {
-        let user = await User.findOne({id})
+    passport.deserializeUser(async (_id, done) => {
+        let user = await User.findOne({_id})
 
         done(null, user)
     })

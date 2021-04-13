@@ -1,8 +1,16 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
+import ListContext from '../../contexts/list/listContext'
 import PropTypes from 'prop-types'
 
 const ListItem = ({item}) => {
+    const listContext = useContext(ListContext)
+    const {updateListItem, getListItems, list} = listContext
+
     const [check, setCheck] = useState(item.checked)
+
+    const onCheck = () => {
+        updateListItem(item._id, list, {checked: !check})
+    }
 
     useEffect(() => {
         setCheck(item.checked)
@@ -29,26 +37,35 @@ const ListItem = ({item}) => {
         }
     }
 
+    const formatDate = (inputDate) => {
+        const date = new Date(inputDate)
+        const day = date.getDate()
+        const month = date.toLocaleString('default', {month: 'long'})
+        const year = date.getFullYear()
+        
+        return `${day} ${month} ${year}`
+    }
+
     return (
         <div className="listItem">
-            <input type="checkbox" name={item.id} id={item.id} checked={check} onChange={() => setCheck(check)}/>
-            <label className="listItem--content" htmlFor={item.id} onClick={(e) => {if (e.target.classList.contains("listItem--content")) setCheck(!check) }}>
-                <div className="listItem--content__left" onClick={() => setCheck(!check)}>
+            <input type="checkbox" name={item._id} id={item._id} checked={check} onChange={() => setCheck(check)}/>
+            <label className="listItem--content" htmlFor={item._id} onClick={(e) => {if (e.target.classList.contains("listItem--content")) onCheck() }}>
+                <div className="listItem--content__left" onClick={() => onCheck()}>
                     <h4 className="listItem--title">{item.title}</h4>
-                    {item.desc && <p className="listItem--description">{item.desc}</p>}
+                    {item.description && <p className="listItem--description">{item.description}</p>}
                 </div>
                 <div className="listItem--content__right">
                     <div className="listItem--details">
-                        <span className="listItem--detail">Created on {item.created}</span>
-                        <span className="listItem--detail">Due {item.due}</span>
+                        <span className="listItem--detail">Created on {formatDate(item.creationDate)}</span>
+                        {item.dueDate && <span className="listItem--detail">Due {formatDate(item.dueDate)}</span>}
                     </div>
                     <div className="listItem--categories">
-                        {item.categories.map((category, key) => {
+                        {item.categories && item.categories.map((category, key) => {
                             return (
                                 <div className={"pill " + catColor(category)} key={key}>{category}</div>
                             )
                         })}
-                        {item.recurring && <div className="recurring"></div>}
+                        {(item.recurring !== "0") && <div className="recurring"></div>}
                     </div>
                 </div>
             </label>

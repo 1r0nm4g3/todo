@@ -14,10 +14,6 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    lists: {
-        type: Array,
-        default: []
-    },
     creationDate: {
         type: Date,
         default: Date.now
@@ -25,6 +21,14 @@ const UserSchema = mongoose.Schema({
     lastLogin: {
         type: Date,
         default: Date.now
+    },
+    writeableLists: {
+        type: Array,
+        default: []
+    },
+    readableLists: {
+        type: Array,
+        default: []
     }
 
 })

@@ -1,50 +1,42 @@
-import React from 'react'
+import {useState, useContext} from 'react'
 import ListHeader from '../components/list/ListHeader'
 import ListItems from '../components/list/ListItems'
+import AddListModal from '../components/list/AddListModal'
+import ListContext from '../contexts/list/listContext'
 
-const List = () => {
-    const list = {
-
-        items: [{
-            id: 1,
-            checked: false,
-            title: "My Task 1",
-            desc: "Here is where the user can put a short description of the task and add any notes/reminders associated with the task.",
-            created: "27 January 2021",
-            due: "27 February 2021",
-            categories: ["Category 1", "Category 2", "Category 3", "Category 4"]
-          }, {
-            id: 2,
-            checked: true,
-            title: "My Task 2",
-            desc: "This is an example of a task that has been checked off.",
-            created: "27 January 2021",
-            due: "27 February 2021",
-            categories: ["Category 1", "Category 2", "Category 3"],
-            recurring: "Weekly"
-         }, {
-            id: 3,
-            title: "Do the dishes",
-            created: "27 January 2021",
-            due: "27 February 2021",
-            categories: ["Chores"],
-            recurring: "Monthly"
-         }, {
-            id: 4,
-            title: "Finish work assignment number 3321",
-            desc: "Fix the mistakes that your co-worker, Matthew Bennett, made . Be sure to remind him what an idiot he is so he cries himself to sleep for the next week. You know he likes that.",
-            created: "27 January 2021",
-            due: "27 February 2021",
-            categories: ["Work", "Important"]
-         }
-        ]
-      }
+const List =  () => {
+    const [showAddModal, setAddModal] = useState(false)
     
+    const listContext = useContext(ListContext)
+    const {deleteSelected, list} = listContext
+
+    const onDeleteSelected = async e => {
+        e.preventDefault()
+        deleteSelected(list)
+    }
+
+    const addItemClick = (e) => {
+        e.preventDefault()
+        setAddModal(!showAddModal)
+        window.scrollTo(0,0)
+        document.body.style.overflow = 'hidden'
+    }
+
+    const closeModals = (e) => {
+        if(e.target.classList.contains("modal--background")){
+            setAddModal(false)
+            document.body.style.overflow = 'unset'
+        }
+    }
+
     return (
-        <main>
-            <ListHeader list={list} />
-            <ListItems items={list.items}/>
-        </main>
+        <>
+            <AddListModal showAddModal={showAddModal} closeModals={closeModals} setAddModal={setAddModal}/>
+            <main>
+                <ListHeader addItemClick={addItemClick} onDeleteSelected={onDeleteSelected}/>
+                <ListItems/>
+            </main>
+        </>
     )
 }
 

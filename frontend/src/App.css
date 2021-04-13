@@ -45,6 +45,7 @@ body{
     min-height: 100vh;
     font-family: "Nunito";
     background-attachment: fixed;
+    position: relative;
 }
 
 p {
@@ -65,10 +66,6 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.navbar--logo{
-    
 }
 
 .navbar--title h3 {
@@ -134,14 +131,24 @@ main {
     width: 75%;
 }
 
-.main-small form .form-group{
+form .form-group{
     width: 100%;
     color: #831843;
     font-size: 18px;
     margin-top: 34px;
 }
 
-.main-small form .form-group input{
+form .form-group-2{
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+}
+
+form .form-group-2 .form-group:first-of-type{
+    padding-right: 50px;
+}
+
+form .form-group input, form .form-group-2 input, form textarea, form select{
     width: 100%;
     border: none;
     background-color: #FCE7F3;
@@ -154,18 +161,38 @@ main {
     color: #831843;
 }
 
-.main-small form .form-group input:focus{
+form textarea{
+    height: 200px;
+    padding: 10px 25px;
+    font-family: "Nunito";
+}
+
+form input[type="date"]{
+    position: relative;
+}
+
+form input[type="date"]::-webkit-calendar-picker-indicator{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transform: translateY(50%);
+    color: rgba(0,0,0,0);
+    background: rgba(0,0,0,0);
+}
+
+form .form-group input:focus, form .form-group-2 input:focus, form textarea:focus, form select:focus{
     background-color: #FDF2F8;
     outline: none;
     border: 1px solid #831843;
 }
 
-.main-small form .form-group input:hover{
+form .form-group input:hover, form .form-group-2 input:hover, form textarea:hover, form select:hover{
     outline: none;
     border: 1px solid #831843;
 }
 
-.main-small form .form-split{
+form .form-split{
     width: 100%;
     color: #831843;
     display: flex;
@@ -173,13 +200,32 @@ main {
     margin-top: 34px;
 }
 
-.main-small form input[type="checkbox"]{
+form select option:hover{
+    background: rgba(219, 39, 119, .3);
+}
+
+form select option{
+    background: #FCE7F3;
+    position: relative;
+}
+
+select option:checked:after {
+    content: attr(title);
+    background: #666;
+    color: #fff;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    border: none;
+}
+
+form input[type="checkbox"]{
     position: absolute;
     height: 1px;
     width: 1px;
 }
 
-.main-small form input[type="checkbox"]:focus{
+form input[type="checkbox"]:focus{
     outline: none;
 }
 
@@ -280,17 +326,92 @@ footer{
 }
 
 .list-options{
-    font-size: 13px;
-    color: #47363D;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.list-options a{
-    color: #47363D;
-    font-weight: normal;
-    margin: 0 10px;
+.button-group-left{
+    display: flex;
+    width: 100%;
+    align-items: flex-end;
+    justify-content: flex-end;
 }
-.list-options a:first-child{
-    margin-left: 0px;
+
+.button{
+    margin-top: 50px;
+    padding: 5px 10px;
+    width: 200px;
+    height: 60px;
+    border: 2px solid #831843;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: .15s all ease-in-out;
+    cursor: pointer;
+    font-family: "Nunito";
+    outline: none;
+    color: #831843;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.button:first-of-type{
+    margin-right: 30px;
+}
+
+.button__secondary:hover{
+    background-color:#831843;
+    color: #FCE7F3;
+}
+
+.button__primary{
+    background-color: #831843;
+    color: #FCE7F3;
+}
+
+.button__secondary{
+    background-color: transparent;
+}
+
+.button__primary:hover{
+    background-color: transparent;
+    color: #831843;
+}
+
+.link--button{
+    cursor: pointer;
+    padding: 5px 10px;
+    margin: 3px 10px 0px 0px;
+    border: 2px solid #831843;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: .15s all ease-in-out;
+}
+
+.link--button svg {
+    margin-right: 10px;
+}
+
+.link--button:hover{
+    background-color:#831843;
+    color: #FCE7F3;
+}
+
+.link--button:nth-last-of-type(1){
+    margin-right: 0px;
+}
+
+.link--button__primary {
+    background-color: #831843;
+    color: #FCE7F3;
+}
+
+.link--button__primary:hover {
+    background-color: transparent;
+    color: #831843;
 }
 
 .listItem {
@@ -387,12 +508,69 @@ footer{
     margin: 1px -1px 0 1px;
 }
 
-.listItem input[type="checkbox"]::after{
-
+.listRow{
+    display: flex;
+    font-size: 13px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
-.listItem input[type="checkbox"]:checked{
-    
+.listInfo{
+    flex-basis: 40%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.list h3 {
+    font-size: 28px;
+    margin: 15px 0;
+    line-height: normal;
+}
+
+.listInfo p {
+    color: #4D363F;
+    font-size: 16px;
+}
+
+.listRow span{
+    color: #831843;
+}
+
+.listSharing{
+    flex-basis: 25%;
+}
+
+.listDetails{
+    text-align: right;
+}
+
+.lists{
+    margin-top: 60px;
+}
+
+.listButton{
+    font-size: 13px;
+    font-weight: bold;
+    color: #831843;
+    display: inline-flex;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 15px;
+    margin: 10px 18px 0 0;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+}
+
+.listButton svg{
+    margin-right: 8px;
+}
+
+.listButton:hover{
+    border: 1px solid #831843;
 }
 
 .pill{
@@ -461,8 +639,35 @@ footer{
     background-color: #831843;
 }
 
+.modal--background{
+    position: absolute;
+    top: 0px;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(77,54,63,.9);
+    z-index: 3;
+}
 
+.modal{
+    width: 1088px;
+    max-width: 95%;
+    backdrop-filter: blur(6px) brightness(1.8);
+    box-shadow: 0px 13px 25px rgba(0,0,0,.16);
+    background-color: rgba(252,231,243,0.68);
+    border-radius: 10px;
+    padding: 5px 50px 50px;
+}
 
+.modal--title{
+    color: #831843;
+    font-size: 48px;
+    margin: 25px 0 -10px;
+    font-weight: bold;
+}
 
 @media only screen and (max-width: 1108px){
     main{
@@ -476,28 +681,23 @@ footer{
         padding-left: 25px;
         padding-right: 25px;
     }
-    html{
-        min-height: 125vh;
-    }
-    body{
-        min-height: 125vh;
-    }
-}
 
-@media only screen and (max-width: 720px){
-    .pill{
-        font-size: 10px;
-        padding: 3px 15px;
-        margin: 6px 0 0 8px;
-    }
-
-    .navbar--link a {
+    .listDetails{
         display: none;
     }
 
-    .meatballMenu{
-        display: block;
+    .listRow{
+        flex-direction: column;
     }
+
+    form .form-group-2{
+        flex-direction: column;
+    }
+
+    form .form-group-2 .form-group:first-of-type{
+        padding: 0px;
+    }
+
 }
 
 @media only screen and (max-width: 720px){

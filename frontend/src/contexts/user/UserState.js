@@ -48,7 +48,7 @@ const UserState = props => {
             if (data.success){
                 dispatch({
                     type: 'LOGIN',
-                    payload: data.user.email
+                    payload: data.user.name
                 })
             }
 
@@ -70,6 +70,27 @@ const UserState = props => {
         })
     }
 
+    const checkAuth = async () => {
+        const res = await fetch('/api/users/check', {method: 'GET'})
+        const data = await res.json()
+
+        if(data !== undefined || data !== null){
+            dispatch({
+                type: 'CHECK_AUTH',
+                payload: data.name
+            })
+        }
+
+        return data
+    }
+
+    const getUsernameByID = async (userID) => {
+        const res = await fetch(`api/users/username/${userID}`, {method: 'GET'})
+        const data = await res.json()
+        return data
+
+    }
+
     return (
         <UserContext.Provider value={{
             user: state.user,
@@ -77,7 +98,9 @@ const UserState = props => {
             error: state.error,
             login,
             logout,
-            registerUser
+            registerUser,
+            checkAuth,
+            getUsernameByID
         }}>
             {props.children}
         </UserContext.Provider>

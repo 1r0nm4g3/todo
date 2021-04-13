@@ -1,10 +1,19 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import UserContext from '../../contexts/user/userContext'
+import ListContext from '../../contexts/list/listContext'
 
 const Header = () => {
     const userContext = useContext(UserContext)
-    const {user, logout} = userContext
+    const {user, logout, checkAuth} = userContext
+
+    const listContext = useContext(ListContext)
+    const {clearListState} = listContext
+
+    useEffect(() => {
+        checkAuth()
+    // eslint-disable-next-line
+    },[])
 
     return (
         <header>
@@ -17,10 +26,10 @@ const Header = () => {
                 </div>
                 <nav>
                     <ul className="navbar--links">
-                        <li className="navbar--link"><Link to="/">My Lists</Link></li>
+                        <li className="navbar--link"><Link to="/lists">My Lists</Link></li>
                         <li className="navbar--link"><Link to="/about">About</Link></li>
                         <li className="navbar--link">
-                           {(user===null)? (<Link to="/login">Login</Link>) : (<Link to="/" onClick={logout}>Logout {user}</Link>)}
+                           {(user===null)? (<Link to="/login">Login</Link>) : (<Link to="/" onClick={() => {logout(); clearListState()}}>Logout {user}</Link>)}
                         </li>
                         <li className="meatballMenu"><a href="/#"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="14" viewBox="0 0 18 14">
     <path id="Path_2" data-name="Path 2" d="M4,6H20M4,12H20M4,18H20" transform="translate(-3 -5)" fill="none" stroke="#831843" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"/>

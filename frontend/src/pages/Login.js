@@ -19,7 +19,7 @@ const Login = (props) => {
         e.preventDefault()
         let loginResult = await login(loginData)
         if(loginResult.success){
-            history.push('/')
+            history.push('/lists')
         }else{
             console.log(loginResult)
         }

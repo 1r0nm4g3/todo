@@ -66,8 +66,20 @@ router.post('/login', (req, res, next) => {
 })
 
 router.get('/logout', (req, res) => {
+    req.session.destroy( (err) => {
+
+    })
     req.logout()
 })
 
+router.get('/check', (req, res) => {
+    if(req.user === null || req.user === undefined) {return false}
+    return res.json(req.user)
+})
+
+router.get('/username/:id', async (req, res) => {
+    const user = await User.findById(req.params.id)
+    return res.json(user.name)
+})
 
 module.exports = router;
