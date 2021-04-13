@@ -52,6 +52,43 @@ const ListState = props => {
         getListItems(listID)
     }
 
+    const addListItem = async (item, listID) => {
+        const res = await fetch(`/api/listItems/${listID}`, {
+            method: 'POST',
+            body: JSON.stringify(item),
+                headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include'
+        })
+        const newItem = await res.json()
+        dispatch({
+            type: 'ADD_ITEM',
+            payload: newItem
+        })
+    }
+
+    const updateListItem = async (itemID, listID, updates) => {
+        const res = await fetch(`/api/listItems/${listID}/${itemID}`, {
+            method: 'PUT',
+            body: JSON.stringify(updates),
+                headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include'
+        })
+        const updatedItem = await res.json()
+        dispatch({
+            type: 'UPDATE_ITEM',
+            payload: updatedItem
+        })
+    }
+
+    const deleteSelected = async (listID) => {
+        dispatch({type: 'DELETE_ITEM'})
+        await fetch(`/api/listItems/${listID}`, {method: 'DELETE'})
+    }
+
     return (
         <ListContext.Provider value={{
             items: state.items,
@@ -62,7 +99,10 @@ const ListState = props => {
             getListItems,
             getLists,
             clearListState,
-            setList
+            setList,
+            addListItem,
+            updateListItem,
+            deleteSelected
         }}>
             {props.children}
         </ListContext.Provider>

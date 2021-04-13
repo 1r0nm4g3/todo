@@ -1,8 +1,16 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
+import ListContext from '../../contexts/list/listContext'
 import PropTypes from 'prop-types'
 
 const ListItem = ({item}) => {
+    const listContext = useContext(ListContext)
+    const {updateListItem, getListItems, list} = listContext
+
     const [check, setCheck] = useState(item.checked)
+
+    const onCheck = () => {
+        updateListItem(item._id, list, {checked: !check})
+    }
 
     useEffect(() => {
         setCheck(item.checked)
@@ -41,17 +49,16 @@ const ListItem = ({item}) => {
     return (
         <div className="listItem">
             <input type="checkbox" name={item._id} id={item._id} checked={check} onChange={() => setCheck(check)}/>
-            <label className="listItem--content" htmlFor={item._id} onClick={(e) => {if (e.target.classList.contains("listItem--content")) setCheck(!check) }}>
-                <div className="listItem--content__left" onClick={() => setCheck(!check)}>
+            <label className="listItem--content" htmlFor={item._id} onClick={(e) => {if (e.target.classList.contains("listItem--content")) onCheck() }}>
+                <div className="listItem--content__left" onClick={() => onCheck()}>
                     <h4 className="listItem--title">{item.title}</h4>
                     {item.description && <p className="listItem--description">{item.description}</p>}
                 </div>
                 <div className="listItem--content__right">
                     <div className="listItem--details">
                         <span className="listItem--detail">Created on {formatDate(item.creationDate)}</span>
-                        <span className="listItem--detail">Due {formatDate(item.dueDate)}</span>
+                        {item.dueDate && <span className="listItem--detail">Due {formatDate(item.dueDate)}</span>}
                     </div>
-                    {/* <pre>{JSON.stringify(item.categories)}</pre> */}
                     <div className="listItem--categories">
                         {item.categories && item.categories.map((category, key) => {
                             return (

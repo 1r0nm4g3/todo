@@ -12,7 +12,7 @@ const ListItems = () => {
     useEffect(() => {
         setList(listID.list)
         getListItems()
-    // eslint-disable-next-line
+        // eslint-disable-next-line
     }, [])
 
     return (
