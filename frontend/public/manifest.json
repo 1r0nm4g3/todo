@@ -1,9 +1,17 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [],
+  "short_name": "ListIt",
+  "name": "ListIt",
+  "icons": [
+    {
+      "src": "/img/logo.svg",
+      "type": "image/svg+xml",
+      "sizes": "144x144 512x512",
+      "purpose": "any"
+    }
+  ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#FCE7F3",
+  "background_color": "#FCE7F3",
+  "orientation": "portrait-primary"
 }
