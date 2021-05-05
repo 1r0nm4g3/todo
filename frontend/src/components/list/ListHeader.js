@@ -6,7 +6,9 @@ const ListHeader = ({addItemClick, onDeleteSelected, fullList, shareClick}) => {
         <div className="list-header">
           <div className="list-title">
             <h1>{(fullList !== null && fullList !== undefined) ? fullList.title : "None"}</h1>
-            <div className="list-options">
+            <ListDetails fullList={fullList}/>
+          </div>
+          <div className="list-options">
               <a href="/" className="link--button link--button__primary" onClick={addItemClick}>
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
   <path id="Path_16" data-name="Path 16" d="M12,6v6m0,0v6m0-6h6m-6,0H6" transform="translate(-5 -5)" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"/>
@@ -28,8 +30,6 @@ const ListHeader = ({addItemClick, onDeleteSelected, fullList, shareClick}) => {
 </svg>
                   Delete Checked Items</a>
             </div>
-        </div>
-          <ListDetails fullList={fullList}/>
         </div>
     )
 }

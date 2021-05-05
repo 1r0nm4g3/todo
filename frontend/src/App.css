@@ -282,6 +282,10 @@ form .form-split{
     margin-top: 34px;
 }
 
+.right-align{
+    text-align: right;
+}
+
 form select option:hover{
     background: rgba(219, 39, 119, .3);
 }
@@ -394,10 +398,14 @@ footer{
 }
 
 .list-header{
+    width: 100%;
+    margin-top: 20px;
+}
+
+.list-title{
     display: flex;
     width: 100%;
     justify-content: space-between;
-    margin-top: 20px;
 }
 
 .list-header h1, h1{
@@ -471,6 +479,7 @@ footer{
     align-items: center;
     justify-content: center;
     transition: .15s all ease-in-out;
+    height: 40px;
 }
 
 .link--button svg {
@@ -796,6 +805,10 @@ footer{
         padding: 0px;
     }
 
+    .list-title h1{
+        font-size: 32px;
+    }
+
 }
 
 @media only screen and (max-width: 720px){
@@ -811,6 +824,15 @@ footer{
 
     .meatballMenu{
         display: block;
+    }
+
+    .list-title{
+        flex-direction: column;
+    }
+
+    .list-details{
+        text-align: left;
+        padding: 20px 0;
     }
 }
 
@@ -855,6 +877,12 @@ footer{
 
     .pill{
         margin: 0 10px 0 0;
+    }
+}
+
+@media only screen and (max-width: 440px){
+    .listButton{
+        padding: 5px;
     }
 }
 
