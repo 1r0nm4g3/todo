@@ -89,6 +89,45 @@ const ListState = props => {
         await fetch(`/api/listItems/${listID}`, {method: 'DELETE'})
     }
 
+    const deleteList = async(listID) => {
+        dispatch({type: 'DELETE_LIST', payload: listID})
+        await fetch(`api/list/${listID}`, {method: 'DELETE'})
+    }
+
+    const createList = async (list) => {
+        const res = await fetch(`/api/list`, {
+            method: 'POST',
+            body: JSON.stringify(list),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        const newList = await res.json()
+        dispatch({
+            type: 'CREATE_LIST',
+            payload: newList
+        })
+    }
+
+    const getListDetails = async(listID) => {
+        const res = await fetch(`/api/list/${listID}`, {
+            method: 'GET'
+        })
+
+        const list = await res.json()
+        return list
+    }
+
+    const updateList = async(listID, newValues, userID) => {
+        const res = (userID) ? await fetch(`/api/list/${listID}/${userID}`, {method: 'PUT', body: JSON.stringify(newValues), headers: {'Content-Type': 'application/json'}}) : await fetch(`/api/list/${listID}`, {method: 'PUT', body: JSON.stringify(newValues), headers: {'Content-Type': 'application/json'}}) 
+        const list = await res.json()
+        dispatch({
+            type: 'UPDATE_LIST',
+            payload: list
+        })
+        return list
+    }
+
     return (
         <ListContext.Provider value={{
             items: state.items,
@@ -102,7 +141,11 @@ const ListState = props => {
             setList,
             addListItem,
             updateListItem,
-            deleteSelected
+            deleteSelected,
+            createList,
+            deleteList,
+            getListDetails,
+            updateList
         }}>
             {props.children}
         </ListContext.Provider>

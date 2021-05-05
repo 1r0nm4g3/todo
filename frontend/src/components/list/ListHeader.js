@@ -1,11 +1,11 @@
 import React from 'react'
 import ListDetails from './ListDetails'
 
-const ListHeader = ({addItemClick, onDeleteSelected}) => {
+const ListHeader = ({addItemClick, onDeleteSelected, fullList}) => {
     return (
         <div className="list-header">
           <div className="list-title">
-            <h1>My List</h1>
+            <h1>{(fullList !== null && fullList !== undefined) ? fullList.title : "None"}</h1>
             <div className="list-options">
               <a href="/" className="link--button link--button__primary" onClick={addItemClick}>
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
@@ -29,7 +29,7 @@ const ListHeader = ({addItemClick, onDeleteSelected}) => {
                   Delete Checked Items</a>
             </div>
         </div>
-          <ListDetails/>
+          <ListDetails fullList={fullList}/>
         </div>
     )
 }

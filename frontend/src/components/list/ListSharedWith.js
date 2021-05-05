@@ -13,7 +13,7 @@ const listSharedWith = ({list}) => {
 
     if (viewers.length === 1){
         return (<div className="listSharing">Shared with &nbsp;
-        <span>{viewers.name}</span>.
+        <span>{viewers[0].name}</span>.
     </div>)
     }
 

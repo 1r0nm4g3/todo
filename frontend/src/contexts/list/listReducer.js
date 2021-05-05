@@ -35,15 +35,30 @@ export default (state, action) => {
                 ...state,
                 items: state.items.filter(item => item.checked !== true)
             }
+        case 'DELETE_LIST':
+            return {
+                ...state,
+                lists: state.lists.filter(list => list._id !== action.payload)
+            }
         case 'ADD_ITEM':
             return {
                 ...state,
-                items: [...state.items, action.payload]
+                items: (state.items) ? [...state.items, action.payload] : [action.payload]
             }
         case 'UPDATE_ITEM':
             return {
                 ...state,
                 items: state.items.map(item => item._id === action.payload._id ? action.payload : item )
+            }
+        case 'CREATE_LIST':
+            return {
+                ...state,
+                lists: [...state.lists, action.payload]
+            }
+        case 'UPDATE_LIST':
+            return {
+                ...state,
+                lists: state.lists.map(list => list._id === action.payload._id ? action.payload :  list)
             }
         default:
             return state
