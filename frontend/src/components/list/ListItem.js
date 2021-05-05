@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 const ListItem = ({item}) => {
     const listContext = useContext(ListContext)
-    const {updateListItem, getListItems, list} = listContext
+    const {updateListItem, list} = listContext
 
     const [check, setCheck] = useState(item.checked)
 

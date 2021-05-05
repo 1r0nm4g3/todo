@@ -82,4 +82,10 @@ router.get('/username/:id', async (req, res) => {
     return res.json(user.name)
 })
 
+router.get('/users/:text', async (req, res) => {
+    const regex = new RegExp(req.params.text, 'i')
+    const results = await User.find({$or: [{name: regex}, {email: regex}]}, {_id: 1, name: 1, email: 1}).limit(4)
+    return res.json(results)
+})
+
 module.exports = router;

@@ -1,4 +1,4 @@
-import {useState, useContext} from 'react'
+import {useState, useContext, useEffect} from 'react'
 import ListHeader from '../components/list/ListHeader'
 import ListItems from '../components/list/ListItems'
 import AddListModal from '../components/list/AddListModal'
@@ -8,7 +8,18 @@ const List =  () => {
     const [showAddModal, setAddModal] = useState(false)
     
     const listContext = useContext(ListContext)
-    const {deleteSelected, list} = listContext
+    const {deleteSelected, getListDetails, list} = listContext
+    const [fullList, setFullList] = useState(getListDetails(list))
+    
+    useEffect(() => {
+        (async () => {if(list !== null){
+            setFullList(await getListDetails(list))
+        }
+        if(list === null){
+            setFullList(null)
+        }
+    })()
+    }, [list, getListDetails])
 
     const onDeleteSelected = async e => {
         e.preventDefault()
@@ -33,7 +44,7 @@ const List =  () => {
         <>
             <AddListModal showAddModal={showAddModal} closeModals={closeModals} setAddModal={setAddModal}/>
             <main>
-                <ListHeader addItemClick={addItemClick} onDeleteSelected={onDeleteSelected}/>
+                <ListHeader addItemClick={addItemClick} onDeleteSelected={onDeleteSelected} fullList={fullList}/>
                 <ListItems/>
             </main>
         </>

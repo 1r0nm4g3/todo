@@ -136,6 +136,28 @@ form .form-group{
     color: #831843;
     font-size: 18px;
     margin-top: 34px;
+    position: relative;
+}
+
+form .form-group .input-option-grouping{
+    position: absolute;
+    width: calc(100% - 50px);
+    top: 85px;
+    left: 0;
+    border-radius: 4px;
+    z-index: 100;
+    display: block;
+}
+
+form .form-group .input-option-grouping .input-option{
+    padding: 15px 25px;
+    cursor: pointer;
+    background-color: #FCE7F3;
+    display: block;
+}
+
+form .form-group .input-option-grouping .input-option:hover{
+    background-color: #FBCFE8;
 }
 
 form .form-group-2{
@@ -521,6 +543,14 @@ footer{
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
+}
+
+.list:nth-child(1) {
+    margin-top: 0;
+}
+
+.list {
+    margin-top: 70px;
 }
 
 .list h3 {
