@@ -3,7 +3,7 @@ import ListContext from '../../contexts/list/listContext'
 
 const ShareListModal = ({showShareModal, setShareModal, closeModals}) => {
     const listContext = useContext(ListContext)
-    const {updateList, list, lists} = listContext
+    const {updateList, lists} = listContext
 
     const initialState = {sharing: "", listType: "0", shareSettings: "viewer"}
 
@@ -92,7 +92,7 @@ const ShareListModal = ({showShareModal, setShareModal, closeModals}) => {
                         {/* {lists.map(list => (list._id === showShareModal && list.viewers.length > 1) ? (<h3>Shared with:</h3>) : null)} */}
                         {(lists.filter(list => (list._id === showShareModal && list.viewers.length > 1)).length > 0) && (<h3>Shared with:</h3>)}
                     {lists.map(list => list._id === showShareModal ? list.viewers.filter(viewer => viewer.id !== list.owner.id).map(viewer => (
-                        <span key={viewer.id} onClick={(e) => onClickRemoveUser(e, viewer.id)}>{viewer.name}</span>
+                        <div key={viewer.id} onClick={(e) => onClickRemoveUser(e, viewer.id)}>{viewer.name}</div>
                     )) : null)}
                         <div className="form-group-2">
                         <div className="form-group">

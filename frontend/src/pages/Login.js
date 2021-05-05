@@ -44,7 +44,7 @@ const Login = (props) => {
                     <input type="checkbox" name="remember" id="remember" onChange={onChange}/>
                     <label htmlFor="remember">Remember Me</label>
                     </div>
-                    <Link to="/">Forgot your password?</Link>
+                    <Link to="/" className="right-align">Forgot your password?</Link>
                 </div>
                 <button>Log In</button>
                 <p>Don't have an account? <Link to="/register">Create one!</Link></p>

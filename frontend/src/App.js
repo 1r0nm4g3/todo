@@ -12,6 +12,14 @@ import Lists from './pages/Lists'
 import UserState from './contexts/user/UserState'
 import ListState from './contexts/list/ListState'
 
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('/sw.js').then(
+    (reg) => console.log('Service Worker Registered', reg)
+  ).catch(
+    (err) => console.log('Service Worker not registered', err)
+  )
+}
+
 function App() {
   return (
     <UserState>
